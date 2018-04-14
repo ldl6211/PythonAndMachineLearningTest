@@ -1,0 +1,10 @@
+from numpy import *
+ar = array([4,2,5,2,3,8,9,1,0])
+print('ar.argsort():')
+print(ar.argsort())
+print('argsort(ar):')
+print(argsort(ar))
+print('argsort(-ar):')
+print(argsort(-ar))
+print('ar:')
+print(ar)

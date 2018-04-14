@@ -1,0 +1,10 @@
+from numpy import *
+ar = array([[1,2],[3,4],[5,6],[7,8],[9,0]])
+print('ar:')
+print(ar)
+print('shape(ar):')
+print(shape(ar))
+print('ar.shape[0]:')
+print(ar.shape[0])
+print('ar.shape[1]:')
+print(ar.shape[1])
