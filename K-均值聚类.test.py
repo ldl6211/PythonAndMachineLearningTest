@@ -14,9 +14,6 @@ def loadDataSet(fileName):
     return np.mat(dataSet)
 
 
-
-
-
 def initVector(k, dataSet):
     m = dataSet.shape[0]
     dataSet = dataSet.tolist()
@@ -26,7 +23,7 @@ def initVector(k, dataSet):
         index = rd.choice(l)
         initV.append(dataSet[index][:])
         l.remove(index)
-    return initV        
+    return initV
 
 
 def createAverageVector(cluster):
@@ -34,8 +31,9 @@ def createAverageVector(cluster):
     averageVector = sum(cluster)/len(cluster)
     return averageVector
 
+
 def calculateDis(a, b):
-    a,b = np.array(a),np.array(b)
+    a, b = np.array(a), np.array(b)
     return ma.sqrt(sum(pow(a-b, 2)))
 
 
@@ -51,7 +49,7 @@ def kMeans(dataSet, k):
             result.append([])
         for i in range(m):
             for j in range(k):
-                dis = calculateDis(dataSet[i],initV[j])
+                dis = calculateDis(dataSet[i], initV[j])
                 if j == 0:
                     minDis = dis
                     index = 0
@@ -64,15 +62,17 @@ def kMeans(dataSet, k):
             v = createAverageVector(result[i])
             newV.append(v)
         for i in range(k):
-            if sum(pow(np.array(initV[i])-np.array(newV[i]),2)) > 0:
+            if sum(pow(np.array(initV[i])-np.array(newV[i]), 2)) > 0:
                 initV = newV
                 circulation = True
                 break
     return result
 
+
 def drawChart(result):
     k = len(result)
-    l = ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F']
+    l = ['0', '1', '2', '3', '4', '5', '6', '7',
+         '8', '9', 'A', 'B', 'C', 'D', 'E', 'F']
     colorList = []
     for i in range(k):
         color = '#'
@@ -86,15 +86,9 @@ def drawChart(result):
         for point in cluster:
             xVal.append(point[0])
             yVal.append(point[1])
-        plt.scatter(xVal,yVal,c=colorList[index])
+        plt.scatter(xVal, yVal, c=colorList[index])
         index += 1
     plt.show()
-
-
-
-                
-
-
 
 
 fileName = 'ClusteringFile.txt'
